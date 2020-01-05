@@ -1,6 +1,6 @@
-const mysql = require('./../db/mysql');
+const mysql = require('../db/mysql');
 
-class Project {
+class ProjectService {
     constructor() {
 
     }
@@ -16,4 +16,4 @@ class Project {
     }
 }
 
-module.exports = new Project();
+module.exports = new ProjectService();

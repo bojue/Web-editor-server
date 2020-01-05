@@ -1,9 +1,0 @@
-class Project {
-    constructor() {
-
-    }
-
-    getAll() {
-        
-    }
-}

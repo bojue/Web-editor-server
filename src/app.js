@@ -1,13 +1,23 @@
-const Koa = require('koa');
-const app = new Koa();
+var Koa = require('koa');
+var app = new Koa();
+var Router = require("koa-router");
+var router = new Router();
 
-const HOST_NAME = 'localhost';
-const POST = 3000;
+var HOST_NAME = 'localhost';
+var POST = 3000;
+const project = require('./services/project')
 
-app.use(async ctx => {
-  ctx.body = JSON.stringify({key: 'value', hello: 'world'})
-});
+router
+  .get("/projects", async (ctx)=> {
+    let data = await project.getList();
+    ctx.body = {msg:'success',data:data}
+  })
 
-app.listen(POST, () => {
-  console.log(`Server running at http://${HOST_NAME}:${POST}`)
+app
+  .use(router.routes())
+  .use(router.allowedMethods())
+
+app.
+  listen(POST, () => {
+    console.log(`Server running at http://${HOST_NAME}:${POST}`)
 });

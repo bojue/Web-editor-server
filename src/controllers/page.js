@@ -1,0 +1,9 @@
+class Project {
+    constructor() {
+
+    }
+
+    getAll() {
+        
+    }
+}

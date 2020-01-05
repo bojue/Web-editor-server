@@ -7,11 +7,23 @@ var HOST_NAME = 'localhost';
 var POST = 3000;
 const project = require('./services/project')
 
+const getProjects = async(ctx) => {
+  const data = await project.getList();
+  ctx.body = {msg:'success',data:data}
+}
+const getProject = async (ctx) => {
+  const id = ctx.params['id'];
+  const data = await project.getById(id);
+  ctx.body = {
+    msg:'scuess',
+    data:data
+  }
+}
+
 router
-  .get("/projects", async (ctx)=> {
-    let data = await project.getList();
-    ctx.body = {msg:'success',data:data}
-  })
+  .get('/projects', getProjects)
+  .get('/project/:id', getProject)
+
 
 app
   .use(router.routes())

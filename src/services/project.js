@@ -10,8 +10,9 @@ class Project {
         return data;
     }
 
-    get(id) {
-        let data = mysql.query('select * from project')
+    getById(id) {
+        let data = mysql.query(`select * from project where id = ${id}`)
+        return data;
     }
 }
 

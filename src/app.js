@@ -40,6 +40,14 @@ const getPages = async(ctx) => {
 
 }
 
+const createPage = async(ctx, next) => {
+  let params = ctx.request.body;
+  const data = await pageService.create(params);
+  ctx.body = {
+    msg:"success"
+  }
+}
+
 const updatePage = async(ctx, next) => {
   let params = ctx.request.body;
   const data = await pageService.update(params);
@@ -48,19 +56,17 @@ const updatePage = async(ctx, next) => {
   };
 }
 
-app
-  .use(bodyParser())
 router
   .get('/projects', getProjects)
   .get('/project/:id', getProject)
   .get('/pages/:projectId', getPages)
+  .post('/page', createPage)
   .put('/page', updatePage)
 
 app
+  .use(bodyParser())
   .use(router.routes())
   .use(router.allowedMethods())
-
-app.
-  listen(POST, () => {
+  .listen(POST, () => {
     console.log(`Server running at http://${HOST_NAME}:${POST}`)
 });

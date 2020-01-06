@@ -12,6 +12,25 @@ class PageService {
         return data;
     }
 
+    create() {
+        let page = {
+            projectId:1,
+            name:"dashboard",
+            appendName:"",
+            description:"无",
+            creator:1,
+            style:'{"width":1000, "height":1000,"backgrund":"#fff}',
+            vip_status:0,
+            componentList:"[]"
+        }
+        let sql = `
+            INSERT INTO page 
+                (projectId,name,appendName,description,creator,style,vip_status,componentList)
+            VALUES (1,"dashboard","","",1,'{"width":1000, "height":1000,"backgrund":"#fff}',0,"[]")`;
+        let data = mysql.query(sql);
+        return data;
+    }
+
     getById(id) {
         let sql = `select * from page where id = ${id}`;
         let data = mysql.query(sql)

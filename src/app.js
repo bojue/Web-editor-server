@@ -1,12 +1,13 @@
-var Koa = require('koa');
-var app = new Koa();
-var Router = require("koa-router");
-var router = new Router();
-var HOST_NAME = 'localhost';
-var POST = 3000;
+const Koa = require('koa');
+const app = new Koa();
+const bodyParser = require('koa-bodyparser')
+const Router = require("koa-router");
+const router = new Router();
+const HOST_NAME = 'localhost';
+const POST = 3000;
 const projectService = require('./services/projectService')
 const pageService = require('./services/pageService')
-const getProjects = async(ctx) => {''
+const getProjects = async(ctx) => {
   const data = await projectService.getList();
   ctx.body = {
     msg:'success',
@@ -39,15 +40,21 @@ const getPages = async(ctx) => {
 
 }
 
-const updatePage = (ctx) => {
-  console.log(ctx)
+const updatePage = async(ctx, next) => {
+  let params = ctx.request.body;
+  const data = await pageService.update(params);
+  ctx.body = {
+    msg:"success"
+  };
 }
 
+app
+  .use(bodyParser())
 router
   .get('/projects', getProjects)
   .get('/project/:id', getProject)
   .get('/pages/:projectId', getPages)
-  .post('page/:projectId/:pageId', updatePage)
+  .put('/page', updatePage)
 
 app
   .use(router.routes())

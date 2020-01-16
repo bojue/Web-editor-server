@@ -17,25 +17,30 @@ const getProjects = async(ctx) => {
 
 const getProject = async (ctx) => {
   const id = ctx.params['id'];
-  const data = await projectService.getById(id);
-  ctx.body = {
-    msg:'scuess',
-    data:data
+  if(!id) {
+    ctx.body = {
+      mes:'error'
+    }
+  }else {
+    const data = await projectService.getById(id);
+    ctx.body = {
+      msg:'scuess',
+      data:data
+    }
   }
+
 }
 
 const getPages = async(ctx) => {
-  const projectId = ctx.params['projectId'];
-  if(projectId === undefined || projectId === null) {
-    ctx.body = {
-      msg :'error',
-    }
-  } else {
+  const projectId = ctx.params['projectId'] || 1;
+  try {
     const data = await pageService.getList(projectId);
     ctx.body = {
       msg:'success',
       data:data
     }
+  } catch (error) {
+    ctx.throw(statusCode, message)
   }
 
 }
@@ -44,7 +49,8 @@ const createPage = async(ctx, next) => {
   let params = ctx.request.body;
   const data = await pageService.create(params);
   ctx.body = {
-    msg:"success"
+    msg:"success",
+    data:data
   }
 }
 
@@ -63,6 +69,12 @@ router
   .post('/page', createPage)
   .put('/page', updatePage)
 
+app.on("error", (err, ctx) => {
+  console.error("Ooops..\n", err.user);
+  ctx.body ={
+    msg:'error'
+  }
+});
 app
   .use(bodyParser())
   .use(router.routes())

@@ -62,15 +62,23 @@ const updatePage = async(ctx, next) => {
   };
 }
 
+const deletePage = async(ctx, next) => {
+  let params = ctx.params['pageId']
+  const data = await pageService.delete(params);
+  ctx.body = {
+    msg:"success"
+  };
+}
+
 router
   .get('/projects', getProjects)
   .get('/project/:id', getProject)
   .get('/pages/:projectId', getPages)
   .post('/page', createPage)
   .put('/page', updatePage)
+  .delete('/page/:pageId', deletePage)
 
 app.on("error", (err, ctx) => {
-  console.error("Ooops..\n", err.user);
   ctx.body ={
     msg:'error'
   }

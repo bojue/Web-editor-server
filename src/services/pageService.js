@@ -74,6 +74,13 @@ class PageService {
         let data = mysql.query(sql);
         return data;
     }
+
+    delete(pageId) {
+        let sql = `
+            DELETE FROM page WHERE id=${pageId}`
+        let data = mysql.query(sql);
+        return data;
+    }
 }
 
 module.exports = new PageService();

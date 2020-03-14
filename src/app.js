@@ -5,8 +5,9 @@ const Router = require("koa-router");
 const router = new Router();
 const HOST_NAME = 'localhost';
 const POST = 3000;
-const projectService = require('./services/projectService')
-const pageService = require('./services/pageService')
+const projectService = require('./services/project_service');
+const projectStatusService = require('./services/project_status_service');
+const pageService = require('./services/page_service');
 const getProjects = async(ctx) => {
   const data = await projectService.getList();
   ctx.body = {
@@ -70,6 +71,18 @@ const deletePage = async(ctx, next) => {
   };
 }
 
+const getStates = async(ctx, next) => {
+  try {
+    const data = await projectStatusService.getStates();
+    ctx.body = {
+      msg:'success',
+      data:data
+    }
+  } catch (error) {
+    ctx.throw(statusCode, message)
+  }
+}
+
 router
   .get('/projects', getProjects)
   .get('/project/:id', getProject)
@@ -77,6 +90,7 @@ router
   .post('/page', createPage)
   .put('/page', updatePage)
   .delete('/page/:pageId', deletePage)
+  .get('/states', getStates)
 
 app.on("error", (err, ctx) => {
   ctx.body ={

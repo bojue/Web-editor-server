@@ -11,7 +11,7 @@ class ProjectService {
     }
 
     getById(id) {
-        let data = mysql.query(`select * from project where id = ${id}`)
+        let data = mysql.query(`select * from project where id = ${id}`);
         return data;
     }
 }

@@ -16,6 +16,15 @@ const getProjects = async(ctx) => {
   }
 }
 
+const createProject = async(ctx, next) => {
+  let params = ctx.request.body;
+  const data = await projectService.create(params);
+  ctx.body = {
+    msg:"success",
+    data:data
+  }
+}
+
 const getProject = async (ctx) => {
   const id = ctx.params['id'];
   if(!id) {
@@ -84,6 +93,7 @@ const getStates = async(ctx, next) => {
 }
 
 router
+  .post('/project', createProject)
   .get('/projects', getProjects)
   .get('/project/:id', getProject)
   .get('/pages/:projectId', getPages)

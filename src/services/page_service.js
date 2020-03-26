@@ -13,7 +13,6 @@ class PageService {
     }
 
     create(page) {
-        console.log(page)
         page['creator'] |= 1;
         page['style'] |= '{"width":1000, "height":1000,"backgrund":"#fff}';
         page['description'] |= "";

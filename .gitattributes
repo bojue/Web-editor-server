@@ -1,2 +1,2 @@
-*.js linguist-language=node
-*.sql linguist-language=sql
+*.js linguist-language=JavaScript
+*.sql linguist-language=JavaScript

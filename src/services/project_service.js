@@ -33,6 +33,14 @@ class ProjectService {
         return data;
     }
 
+
+    delete(id) {
+        let sql = `
+            DELETE FROM project WHERE id=${id}`
+        let data = mysql.query(sql);
+        return data;
+    }
+
     momentDate(time) {
         let _time = time || new Date();
         return moment(_time).format('YYYY-MM-DD HH:mm:ss');

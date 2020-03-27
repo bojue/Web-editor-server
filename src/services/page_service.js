@@ -36,7 +36,6 @@ class PageService {
                 "${page['type']}",
                 "${page['componentList']}",
                 "${page['create_time']}","${page['update_time']}")`;
-            console.log(sql);
         let data = mysql.query(sql);
         return data;
     }

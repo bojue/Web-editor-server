@@ -38,8 +38,16 @@ const getProject = async (ctx) => {
       data:data
     }
   }
-
 }
+
+const deleteProject = async(ctx, next) => {
+  let params = ctx.params['projectId']
+  const data = await projectService.delete(params);
+  ctx.body = {
+    msg:"success"
+  };
+}
+
 
 const getPages = async(ctx) => {
   const projectId = ctx.params['projectId'] || 1;
@@ -96,6 +104,7 @@ router
   .post('/project', createProject)
   .get('/projects', getProjects)
   .get('/project/:id', getProject)
+  .delete('/project/:projectId',deleteProject)
   .get('/pages/:projectId', getPages)
   .post('/page', createPage)
   .put('/page', updatePage)

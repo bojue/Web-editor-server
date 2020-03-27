@@ -1,6 +1,6 @@
 ## Web-editor-server-node
 
-[Web-Editor](https://github.com/bojue/Web-Editor)服务端，基于Koa.js开发
+基于Koa.js开发的后端服务器，对[Web-Editor](https://github.com/bojue/Web-Editor)提供配套接口
 
 ### 1. 下载
 

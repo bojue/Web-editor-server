@@ -1,13 +1,13 @@
-## Web-editor-server-node
+## Web-editor-server
 
 基于Koa.js开发的后端服务器，对[Web-Editor](https://github.com/bojue/Web-Editor)提供配套接口
 
 ### 1. 下载
 
 ```javascript
-git clone https://github.com/bojue/Web-editor-server-node.git
+git clone https://github.com/bojue/Web-editor-serve.git
 
-cd Web-editor-server-node
+cd Web-editor-server
 
 npm install
 
@@ -17,7 +17,7 @@ npm install
 
 创建数据库(Database): ` tempo `,并且将
 
-` Web-editor-server-node/init_db_mysql/ `目录下面数据库表导入数据库 ` tempo `
+` Web-editor-server/init_db_mysql/ `目录下面数据库表导入数据库 ` tempo `
 
 
 ### 3. 配置

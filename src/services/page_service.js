@@ -14,24 +14,26 @@ class PageService {
 
     create(page) {
         page['creator'] |= 1;
-        page['style'] |= '{"width":1000, "height":1000,"backgrund":"#fff}';
+        page['style'] |= '{"width":"1000", "height":"1000","backgrund":"#fff}';
         page['description'] |= "";
         page['appendName'] |= page['name'] || '';
         page['vip_status'] |=  0;
         page['componentList'] = "[]";
         page['create_time'] = this.momentDate(page['create_time']);
         page['update_time'] = this.momentDate(page['update_time']);
+        
 
         let sql = `
             INSERT INTO page 
-                (projectId,name,appendName,description,creator,style,vip_status,type,componentList,create_time ,update_time)
+                (projectId,name,appendName,description,creator,width,height,vip_status,type,componentList,create_time ,update_time)
             VALUES (
                 ${page['projectId']}, 
                 "${page['name']}",
                 "${page['appendName']}", 
                 "${page['description']}",
                 ${page['creator']},
-                ${page['style']},
+                ${page['width']},
+                ${page['height']},
                 ${page['vip_status']},
                 "${page['type']}",
                 "${page['componentList']}",

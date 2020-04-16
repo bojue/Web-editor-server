@@ -2,12 +2,26 @@ const Koa = require('koa');
 const app = new Koa();
 const bodyParser = require('koa-bodyparser')
 const Router = require("koa-router");
+const loadsh = require('lodash')
+
 const router = new Router();
+
 const HOST_NAME = 'localhost';
 const POST = 3000;
 const projectService = require('./services/project_service');
 const projectStatusService = require('./services/project_status_service');
 const pageService = require('./services/page_service');
+const dataSourceService = require('./services/data_source');
+
+const getDataSourceByType = async(ctx) => {
+  let params = ctx.request.body;
+  const data = await dataSourceService.getDataSource();
+  ctx.body = {
+    msg:"success",
+    data:data
+  }
+}
+
 const getProjects = async(ctx) => {
   const data = await projectService.getList();
   ctx.body = {
@@ -110,6 +124,7 @@ router
   .put('/page', updatePage)
   .delete('/page/:pageId', deletePage)
   .get('/states', getStates)
+  .get('/dataSource', getDataSourceByType)
 
 app.on("error", (err, ctx) => {
   ctx.body ={

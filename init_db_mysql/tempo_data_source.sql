@@ -16,35 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `project`
+-- Table structure for table `data_source`
 --
 
-DROP TABLE IF EXISTS `project`;
+DROP TABLE IF EXISTS `data_source`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `project` (
+CREATE TABLE `data_source` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `appendName` varchar(100) NOT NULL,
-  `description` varchar(200) NOT NULL,
-  `status` int(10) DEFAULT NULL,
-  `vip_staus` int(10) DEFAULT NULL,
-  `creator` varchar(100) DEFAULT NULL,
-  `create_time` datetime DEFAULT NULL,
-  `update_time` datetime DEFAULT NULL,
-  `type` varchar(50) DEFAULT NULL,
+  `idustry` int(11) DEFAULT NULL,
+  `idustry_name` varchar(200) NOT NULL,
+  `idustry_sub` int(11) DEFAULT NULL,
+  `idustry_sub_name` varchar(200) NOT NULL,
+  `data_id` int(11) NOT NULL,
+  `data_name` varchar(100) DEFAULT NULL,
+  `value` decimal(10,0) DEFAULT NULL,
+  `dataType` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1007 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `project`
+-- Dumping data for table `data_source`
 --
 
-LOCK TABLES `project` WRITE;
-/*!40000 ALTER TABLE `project` DISABLE KEYS */;
-INSERT INTO `project` VALUES (1,'销售报表','销售报表','统计的销售Dashboard',0,0,'1','2020-01-05 10:38:41','2020-01-05 10:38:41',NULL),(2,'运营报表系统','运营报表系统','运营报表数据',0,0,'1','2020-01-05 11:02:58','2020-01-05 11:02:58','cutome'),(6,'新项目','新项','无',NULL,0,'1','2020-03-27 13:16:25','2020-03-27 13:16:25','0');
-/*!40000 ALTER TABLE `project` ENABLE KEYS */;
+LOCK TABLES `data_source` WRITE;
+/*!40000 ALTER TABLE `data_source` DISABLE KEYS */;
+INSERT INTO `data_source` VALUES (1000,1,'互联网',1,'电商',1,'近7日交易额增长率',11,'gauge'),(1001,1,'互联网',1,'电商',2,'第一季度GVM增长率',44,'gauge'),(1002,1,'互联网',1,'电商',3,'2020东南亚交易额长率',33,'gauge'),(1003,1,'互联网',2,'游戏',4,'付费用户增长率',77,'gauge'),(1004,1,'互联网',2,'游戏',5,'用户时常增长率',34,'gauge'),(1005,2,'工业',1,'IDC监控管理',1,'一季度市场占有率增长',2,'gauge'),(1006,2,'工业',1,'人脸识别',2,'监控市场规模增长率',9,'gauge');
+/*!40000 ALTER TABLE `data_source` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

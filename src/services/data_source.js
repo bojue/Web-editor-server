@@ -5,8 +5,11 @@ class DataSourceService {
 
     }
 
-    getDataSource() {
-        let sql = `select * from data_source`;
+    getDataSource(params) {
+       
+        // let sql = `select * from data_source`;
+        let sql = `select idustry,idustry_name from data_source group by idustry,idustry_name `;
+    
         let data = mysql.query(sql);
         return data;
     }
@@ -19,4 +22,4 @@ class DataSourceService {
 
 }
 
-module.exports = new DataSourceService();
+module.exports = new DataSourceService(); 

@@ -14,8 +14,8 @@ const pageService = require('./services/page_service');
 const dataSourceService = require('./services/data_source');
 
 const getDataSourceByType = async(ctx) => {
-  let params = ctx.request.body;
-  const data = await dataSourceService.getDataSource();
+  const paramis = ctx.params['idustry'];
+  const data = await dataSourceService.getDataSource(paramis);
   ctx.body = {
     msg:"success",
     data:data
@@ -125,6 +125,7 @@ router
   .delete('/page/:pageId', deletePage)
   .get('/states', getStates)
   .get('/dataSource', getDataSourceByType)
+  // .get('/dataSource/:idustry', getDataSourceByType)s
 
 app.on("error", (err, ctx) => {
   ctx.body ={

@@ -19,6 +19,15 @@ npm install
 
 ` Web-editor-server/init_db_mysql/ `目录下面数据库表导入数据库 ` tempo `
 
+1. 创建数据库：`tempo`
+
+![创建数据库](/src/assets/createTempo.png)
+
+2. 导入数据
+
+![创建数据库](/src/assets/import.png)
+
+
 
 ### 3. 配置
 

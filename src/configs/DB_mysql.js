@@ -1,7 +1,7 @@
 const config = {
     host     : 'localhost',
     user     : 'root',
-    password : "admin123",
+    password : "",
     database : 'tempo'
 }
 

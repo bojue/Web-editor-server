@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "koa-bodyparser": "^4.2.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "mongodb": "^3.4.0",
     "mysql": "^2.17.1"
